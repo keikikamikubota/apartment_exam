@@ -5,7 +5,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    2.times {@property.stations.build}
+    2.times {@property.stations.build} #newではなくbuildにするとアソシエーションと認識されやすいとのアドバイスから変更
   end
 
   def create
@@ -28,7 +28,7 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id])
-    @property.stations.destroy_all
+    @property.stations.destroy_all #一度過去の最寄り駅を全て削除することで、重複を回避した
     if @property.update(property_params)
       redirect_to properties_path, notice: "更新が完了しました"
     else
@@ -48,5 +48,4 @@ class PropertiesController < ApplicationController
     params.require(:property).permit(:name, :value, :address, :age, :note,
       stations_attributes: [:train_line, :station_name, :walking_time, :destroy])
   end
-
 end
