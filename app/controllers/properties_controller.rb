@@ -23,10 +23,17 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find(params[:id])
+    1.times {@property.stations.build}
   end
 
   def update
-
+    @property = Property.find(params[:id])
+    @property.stations.destroy_all
+    if @property.update(property_params)
+      redirect_to properties_path, notice: "更新が完了しました"
+    else
+      render :edit
+    end
   end
 
   def destroy
