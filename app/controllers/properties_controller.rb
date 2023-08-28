@@ -3,6 +3,11 @@ class PropertiesController < ApplicationController
   end
 
   def new
+    @property = Property.new
+  end
+
+  def create
+  
   end
 
   def show
@@ -10,4 +15,18 @@ class PropertiesController < ApplicationController
 
   def edit
   end
+
+  def update
+
+  end
+
+  def destory
+
+  end
+
+  private
+  
+  def
+  end
+
 end
