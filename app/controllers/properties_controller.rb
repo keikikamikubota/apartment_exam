@@ -1,13 +1,20 @@
 class PropertiesController < ApplicationController
   def index
+    @properties = Property.all
   end
 
   def new
     @property = Property.new
+    @property.stations.new
   end
 
   def create
-  
+    @property = Property.new(property_params)
+    if @property.save
+      redirect_to properties_path, notice: "物件が登録できました"
+    else
+      render :new
+    end
   end
 
   def show
@@ -25,8 +32,10 @@ class PropertiesController < ApplicationController
   end
 
   private
-  
-  def
+
+  def property_params
+    params.require(:property).permit(:name, :value, :address, :age, :note,
+      stations_attributes: [:train_line, :station_name, :walking_time])
   end
 
 end
