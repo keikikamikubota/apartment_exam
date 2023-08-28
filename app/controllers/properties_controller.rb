@@ -5,7 +5,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    @property.stations.new
+    2.times {@property.stations.new}
   end
 
   def create
@@ -13,7 +13,7 @@ class PropertiesController < ApplicationController
     if @property.save
       redirect_to properties_path, notice: "物件が登録できました"
     else
-      render :new
+      render :new, notice: "登録に失敗しました"
     end
   end
 
