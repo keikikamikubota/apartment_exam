@@ -44,8 +44,11 @@
 
   <br>
   <div class="actions">
-    <%= form.submit "登録する" %>
+    <% if action_name == "new" %>
+      <%= form.submit "登録する" %>
+    <% else %>
+      <%= form.submit "更新する" %>
+    <% end %>
   </div>
   <br>
-
 <% end %>
