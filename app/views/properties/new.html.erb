@@ -1,5 +1,15 @@
 <h1>物件登録</h1>
 
+<% if @property.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @property.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= render 'form', property: @property %>
 
 <%= link_to '戻る', properties_path %>
