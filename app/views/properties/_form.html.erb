@@ -1,37 +1,42 @@
 <%= form_with(model: @property, local: true) do |form| %>
-  <div class="field">
+  <div class="name_field">
     <%= form.label :"物件名" %><br>
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="value_field">
     <%= form.label :"賃料" %><br>
     <%= form.text_field :value %>円
   </div>
 
-  <div class="field">
+  <div class="address_field">
+    <%= form.label :"住所" %><br>
+    <%= form.text_field :text %>
+  </div>
+
+  <div class="age_field">
     <%= form.label :"築年数" %><br>
     <%= form.text_field :age %>年
   </div>
 
-  <div class="field">
+  <div class="note_field">
     <%= form.label :"備考" %><br>
     <%= form.text_area :note %>
   </div>
 
   <hr>
-
+  <% i = 0 %>
   <%= form.fields_for :stations do |stations_form| %>
-    <h3><%= %>最寄駅</h3>
-    <div class="field">
+    <h3>最寄駅<%= i += 1 %></h3>
+    <div class="train_line_field">
       <%= stations_form.label :"路線名" %><br>
       <%= stations_form.text_field :train_line %>
     </div>
-    <div class="field">
+    <div class="station_name_field">
       <%= stations_form.label :"駅名" %><br>
       <%= stations_form.text_field :station_name %>
     </div>
-    <div class="field">
+    <div class="walking_time_field">
       <%= stations_form.label :"徒歩時間" %><br>
       <%= stations_form.text_field :walking_time %>分
     </div>

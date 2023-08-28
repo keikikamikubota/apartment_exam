@@ -1,19 +1,15 @@
-<%= form.fields_for :station do |station_form| %>
-  <div class="field">
-    <%= station_form.label :"路線名" %>
-    <%= station_form.text_field :train_line %>
+<%= form.fields_for :stations do |stations_form| %>
+  <h3>最寄駅<%= %></h3>
+  <div class="train_line_field">
+    <%= stations_form.label :"路線名" %><br>
+    <%= stations_form.text_field :train_line %>
   </div>
-  <div class="field">
-    <%= station_form.label :"駅名" %>
-    <%= station_form.text_field :station_name %>
+  <div class="station_name_field">
+    <%= stations_form.label :"駅名" %><br>
+    <%= stations_form.text_field :station_name %>
   </div>
-  <div class="field">
-    <%= station_form.label :"徒歩時間" %>
-    <%= station_form.text_field :walking_time %>
-  </div>
-<% end %>
-
-  <div class="actions">
-    <%= form.submit "登録する" %>
+  <div class="walking_time_field">
+    <%= stations_form.label :"徒歩時間" %><br>
+    <%= stations_form.text_field :walking_time %>分
   </div>
 <% end %>
